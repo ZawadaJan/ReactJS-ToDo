@@ -1,12 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Inputs from "react/inputs.jsx";
-import Header from 'react/header.jsx';
+import NewElements from 'react/new-elements.jsx';
 
 const list = [
-    
-        
-    
+    {
+        name: "Jan Zawada",
+        email:"zetwude@gmail.com"
+    },
+    {
+        name: "JayZet",
+        email: "zzz@ppp.pl"
+    }
     
 ]; 
 
@@ -15,7 +20,8 @@ export default class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            list
+            list,
+            bool: false
         };
     }
     
@@ -24,17 +30,26 @@ export default class App extends React.Component {
         this.state.list.push({
             name,
             email
+            
         });
         
         this.setState({list: this.state.list});
+    }
+    
+    changeBool() {
+        if(this.state.bool === this.state.bool) {
+            this.setState({
+                bool: !this.state.bool
+            });
+        }
     }
     
     
     
     render() {
         return <div>
-            <Inputs list = {this.state.list} addToList = {this.addToList.bind(this)}/>
-            <Header list = {this.state.list}/>
+            <Inputs addToList = {this.addToList.bind(this)} bool={this.changeBool.bind(this)}/>
+            <NewElements list = {this.state.list}/>
         </div>
                 
     }
