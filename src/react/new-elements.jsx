@@ -9,48 +9,42 @@ export default class NewElement extends React.Component {
         super(props);
         this.state = {
             list: this.props.list
+            
         };
     }
-    
-//        function test() {
-//            const propsList = this.state.list;
-//            function fn (element, index) {
-//                let nameElem = element.name;
-//                return nameElem;
-//            }   
-//        }
     
         showName() {
         
             const props = this.state.list;
             return _.map(props, (element, index) => {
-                
-              return <ElementsList key={index} value={element}/>
-//                console.log(element);
+                  
+                return <ElementsList key={index+1} value={element}/>
     
                 
             });
             
             
-    }
+        }
+    
+        showHeader() {
+            if(this.state.list.length > 0) {
+                return <Header/>
+            } else {
+                return null
+            }
+            
+        }
     
     render() {
-        let test = this.state.list;
         
         return (
             
-            <table className="table table-condensed">
-                <Header/>
-                    <tbody>
-                        
-                            
-                                {this.showName()}
-                            
-                        
-                    </tbody>
-                    
-                
+            <table className="table table-striped">
+                {this.showHeader()}
+                    <tbody>         
+                        {this.showName()}  
+                    </tbody>   
             </table>
-            )
+        )
     }
 }
