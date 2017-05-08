@@ -6,11 +6,11 @@ module.exports = {
     
     devServer: {
         inline: true,
-        port: 8008
+        port: 80
     },
     
     entry: [
-        'webpack-dev-server/client?http://0.0.0.0:8008/',
+        'webpack-dev-server/client?http://0.0.0.0:80/',
         'webpack/hot/only-dev-server',
         './src'
     ],
