@@ -3,8 +3,14 @@ var path = require('path');
 
 module.exports = {
     devtool: 'inline-source-map',
+    
+    devServer: {
+        inline: true,
+        port: 8008
+    },
+    
     entry: [
-        'webpack-dev-server/client?http://127.0.0.1:8080/',
+        'webpack-dev-server/client?http://0.0.0.0:8008/',
         'webpack/hot/only-dev-server',
         './src'
     ],
