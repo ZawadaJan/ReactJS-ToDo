@@ -9,7 +9,7 @@ export default class Inputs extends React.Component {
         }
     }
     
-    //Jesli ktores z pol jest puste, wyswietla sie odpowiedni komunikat
+    //Jesli ktores z pol jest puste lub bledne, wyswietla sie odpowiedni komunikat
     
     showError() {
         if(this.state.error != null) {
@@ -31,7 +31,7 @@ export default class Inputs extends React.Component {
         const checkMail = this.checkMail(mailReg, newEmail);
         const checkName = this.checkName(nameReg, newName);
         const checkInputs = this.checkInputs(checkName, checkMail, newName, newEmail);
-//        console.log(checkMail);
+//        console.log(newName.length, checkName);
         
     }
     
@@ -40,14 +40,16 @@ export default class Inputs extends React.Component {
     checkMail(mailReg, newEmail) {
         if (mailReg.test(newEmail)) {
                 return true
-            } else {
+        } else {
                 return false
-            }
+        }
     }
     
     checkName(nameReg, newName) {
-        if(nameReg.test(newName) ) {
-           return true
+        if(newName.length > 20 ) {
+           return false
+           } else if(nameReg.test(newName)) {
+               return true
            } else {
                return false
            }
@@ -57,8 +59,8 @@ export default class Inputs extends React.Component {
     
     checkInputs(checkName, checkMail, newName, newEmail) {
         
-        console.log("wartosc maila:"+checkMail);
-        console.log("wartosc name:"+checkName);
+//        console.log("wartosc maila:"+checkMail);
+//        console.log("wartosc name:"+checkName);
         
         
         if ((checkName == false && checkMail == false)) {
@@ -70,7 +72,7 @@ export default class Inputs extends React.Component {
             return this.setState({error:"E-mail is incorrect"});
             
         } else if (checkName == false) {
-            return this.setState({error:"Name is incorrect"});
+            return this.setState({error:"Name is incorrect (Max length of name is 20)"});
         }
         
         
@@ -87,12 +89,12 @@ export default class Inputs extends React.Component {
     
     
     render() {
-        return ( <div style={{display: 'flex'}}>
+        return ( <div>
                     <form>
                         <input className="input-sm" type="text" placeholder="Type your name" ref="nameInput"></input>
                         <input className="input-sm" type="text" placeholder="Type your email" ref="emailInput"></input>
-                        <button className="btn-md btn-primary" type="submit" onClick={this.submitButton.bind(this)} onChange={this.props.counter}>Submit</button>
-                        {this.showError()}
+                        <button className="btn-md btn-primary" type="submit" onClick={this.submitButton.bind(this)}>Submit</button>
+                        {this.showError()} 
                     </form>
             </div>
                 
