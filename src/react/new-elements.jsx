@@ -17,8 +17,9 @@ export default class NewElement extends React.Component {
         
             const props = this.state.list;
             return _.map(props, (element, index) => {
+                const counter = index+1;
                   
-                return <ElementsList key={index+1} value={element}/>
+                return <ElementsList key={counter} value={element} counter={counter}/>
     
                 
             });
