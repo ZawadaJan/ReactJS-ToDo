@@ -15,9 +15,9 @@ module.exports = {
         './src'
     ],
     output: {
-        path: path.join(__dirname, 'public'),
         filename: 'bundle.js'
     },
+    
     resolve: {
         modulesDirectories: ['node_modules', 'src'],
         extensions: ['', '.js']
