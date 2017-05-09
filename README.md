@@ -6,4 +6,4 @@ I'm learning so thanks for forbearance :)
 
 ## Next step
 
-Remove elements
+"App should store max 10 users"
