@@ -16,30 +16,27 @@ export default class App extends React.Component {
             list
         };
     }
-    
-    
+     
     addToList(name, email) {
         this.state.list.push({
             name,
-            email
-            
+            email 
         });
         
         this.setState({list: this.state.list});
     }
-      
-    
+
     render() {
-        
-        return <div>
-            <Inputs addToList = {this.addToList.bind(this)} value={this.state.list}/>    
-            <NewElements list = {this.state.list}/>
-            
-        </div>
-                
+        return ( 
+                <div className="container">
+                    <div>
+                        <Inputs addToList = {this.addToList.bind(this)} value={this.state.list}/>    
+                        <NewElements list = {this.state.list}/>
+                    </div>
+                </div>    
+        )          
     }
 }
-
 
 document.addEventListener("DOMContentLoaded", function() {
     ReactDOM.render(

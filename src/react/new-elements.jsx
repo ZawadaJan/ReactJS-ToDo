@@ -8,31 +8,31 @@ export default class NewElement extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            list: this.props.list
-            
+            list: this.props.list      
         };
     }
     
-        showName() {
+        addUser() {
         
-            const props = this.state.list;
+            const props = this.props.list;
             return _.map(props, (element, index) => {
-                const counter = index+1;
-                  
-                return <ElementsList key={counter} value={element} counter={counter}/>
-    
-                
-            });
-            
-            
+                return <ElementsList key={index} value={element} counter={index+1} delete={this.deleteList.bind(this, element)}/>    
+            });    
         }
     
         showHeader() {
-            if(this.state.list.length > 0) {
+            if(this.props.list.length > 0) {
                 return <Header/>
             } else {
                 return null
             }
+            
+        }
+    
+        deleteList(elementToDelete) {
+            console.log(elementToDelete);
+            _.remove(this.props.list, currentElement => currentElement === elementToDelete);
+            this.setState({list: this.state.list})
             
         }
     
@@ -43,7 +43,7 @@ export default class NewElement extends React.Component {
             <table className="table table-striped">
                 {this.showHeader()}
                     <tbody>         
-                        {this.showName()}  
+                        {this.addUser()}  
                     </tbody>   
             </table>
         )

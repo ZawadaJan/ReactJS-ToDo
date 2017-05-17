@@ -11,7 +11,7 @@ export default class Header extends React.Component {
         return (
           <thead>
                <tr>
-                    <th>L.p</th>   
+                    <th>LP</th>   
                     <th>Name</th>
                     <th>E-mail</th>
                 </tr>
